@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Eric's Retro Chatbot</title>
+  <title>Retro Chatbot</title>
   <style>
     body {
       font-family: monospace;
@@ -44,17 +44,23 @@
     }
     textarea {
       width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
       padding: 0.5rem;
       resize: vertical;
       font-family: monospace;
       background: #222;
       color: #fff;
       border: 1px solid #888;
+      font-size: 1rem;
     }
     button {
+      width: 100%;
+      max-width: 100%;
       margin-top: 0.5rem;
       padding: 0.5rem 1rem;
       font-size: 1rem;
+      box-sizing: border-box;
       background: #444;
       color: #fff;
       border: none;
@@ -62,6 +68,11 @@
     }
     button:hover {
       background: #666;
+    }
+    @media (max-width: 600px) {
+      textarea, button {
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
@@ -105,6 +116,11 @@
         console.error(err);
       }
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const initialPrompt = "Hey there! I'm Eric. Ask me anything about the 1980s!";
+      appendMessage('bot', initialPrompt);
+    });
 
     document.getElementById('user-input').addEventListener('keydown', e => {
       if (e.key === 'Enter' && !e.shiftKey) {
