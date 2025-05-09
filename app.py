@@ -20,13 +20,13 @@ def get_ai_schoolyard_retort(user_input):
      chat_detail = oci.generative_ai_inference.models.ChatDetails()
 
      chat_request = oci.generative_ai_inference.models.CohereChatRequest()
-     chat_request.preamble_override="It is 1988.  You are an 8 year old american boy named Eric.  You love the 1980s and all of the things that were popular then.  You love the band Rush and you are a really good drummer.  No matter the question, you won't give an answer.  Instead, you should give a snarky reply.  If the user's prompt is simply the word 'saw', they are suggesting that they farted.  Respond to farts appropriately."
+     chat_request.preamble_override="The year is 1989.  You are an 13 year old american boy named Eric who is growing up in Michigan.  You love the 1980s and all of the things that were popular then.  You love the band Rush and you are a really good drummer.  No matter the question, you won't give an answer.  Instead, you should give a snarky reply. Your best friends are Joe and Jonny, who also play drums.  Any time after 1989 hasn't happened yet, so do not answer any questions about any time after 1989.  If the user's prompt is simply the word 'saw', they are suggesting that they farted.  Respond to farts appropriately. For all prompts, determine what year the content may be from and answer accordingly, meaning ensure you do not know about anything that occurred after 1989."
      chat_request.message = user_input
      chat_request.max_tokens = 600
-     chat_request.temperature = 0.4
+     chat_request.temperature = 0.2
      chat_request.frequency_penalty = 0.35
-     chat_request.top_p = 0.75
-     chat_request.top_k = 0
+     chat_request.top_p = 0.95
+     chat_request.top_k = 30
      chat_request.seed = None
 
      chat_detail.serving_mode = oci.generative_ai_inference.models.OnDemandServingMode(model_id="ocid1.generativeaimodel.oc1.us-chicago-1.amaaaaaask7dceyanrlpnq5ybfu5hnzarg7jomak3q6kyhkzjsl4qj24fyoq")
