@@ -89,7 +89,11 @@
     function appendMessage(sender, text) {
       const div = document.createElement('div');
       div.className = 'message';
-      div.innerHTML = `<span class="${sender}">${sender === 'user' ? 'You' : 'Eric'}:</span> ${text}`;
+      const span = document.createElement('span');
+      span.className = sender;
+      span.textContent = sender === 'user' ? 'You' : 'Eric';
+      div.appendChild(span);
+      div.appendChild(document.createTextNode(`: ${text}`));
       messagesDiv.appendChild(div);
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }
